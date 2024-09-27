@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang ="en">
 	<head>
-		<meta name="copyright" content="Copyright 2024, SOLAV.me">
+		<meta name="copyright" content="SOLAV.me">
 		<meta name="creator" content="SOLAV.me">
 		<meta name="publisher" content="Maher Asaad Baker">
 		<meta name="rating" content="General">
@@ -137,7 +137,7 @@
 								</div>
 								<div class="b-0">
 									<h1 class="pb-3">Maher Asaad Baker</h1>
-									<h2 class="pb-3"><i aria-hidden="true" class="bi bi-patch-check text-info" title="Professions"></i> Musician, Author, Journalist, Graphic artist, and Director.</h2>
+									<h2 class="pb-3"><i aria-hidden="true" class="bi bi-patch-check text-info" title="Professions"></i> Syrian Musician, Author, and Journalist.</h2>
 									<h3 class="pb-0"><i aria-hidden="true" class="bi bi-house-check text-warning" title="Place and date of birth"></i> Born in Damascus, Syria in 1977.</h3>
 								</div>
 							</div>
@@ -4981,9 +4981,9 @@
 		</main>
 		<footer class="footer mt-auto py-3 text-bg-dark">
 			<div class="container text-center">
-				Maher Asaad Baker © 2024<br>
+				Maher Asaad Baker © <span id="currentYear"></span><br>
 				<a href="void(0)" data-bs-toggle="modal" data-bs-target="#PrivacyPolicy"><small>Privacy policy</small></a>
-				<br><small>We may use cookies on our website to give you the most relevant experience by remembering your preferences and repeat visits. By visiting this website, you consent to the use of ALL the cookies.</small>
+				<br><small>We use cookies on our website to enhance your experience by remembering your preferences and past visits. This includes both our own cookies and third-party cookies, which help us provide personalized content. By continuing to browse, you consent to the use of all cookies. Thank you for visiting!</small>
 				<br><a class="small" target="_blank" href="https://solav.me">SITE DESIGN AND IMPLEMENTATION BY SOLAV</a>
 			</div>
 		</footer>
@@ -5104,6 +5104,17 @@
 					document.getElementById("logo").src="./images/icon.svg";
 				}
 			};
+
+			fetch('http://worldtimeapi.org/api/timezone/Etc/UTC')
+				.then(response => response.json())
+				.then(data => {
+					const currentYear = new Date(data.utc_datetime).getFullYear();
+					document.getElementById('currentYear').textContent = currentYear;
+				})
+				.catch(error => {
+					console.error('Error fetching the year:', error);
+					document.getElementById('currentYear').textContent = new Date().getFullYear();
+			});
 
 		</script>
 
